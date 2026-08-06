@@ -6,7 +6,7 @@ export const projects = [
     description:
       'A personal budget tracker web app built to manage finances effortlessly. Track income and expenses across multiple accounts, set savings goals, and log debts and receivables — all stored locally with no login required.',
     techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Radix UI'],
-    liveUrl: 'https://kwartrack.vercel.app',
+    liveUrl: 'https://kwartrack-three.vercel.app',
     repoUrl: null,
     role: null,
     award: null,

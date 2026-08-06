@@ -27,7 +27,7 @@ export default function Hero() {
       className="bg-gradient-mesh"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: 'auto',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
