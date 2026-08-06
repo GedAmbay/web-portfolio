@@ -126,7 +126,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.75rem;
+    padding: 0.875rem 2.25rem;
     border-radius: 0.625rem;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -170,12 +170,13 @@ body {
 
   /* ── Section wrapper ── */
   .section {
-    padding: 5rem 1.5rem;
+    padding: 5rem 0;
   }
 
   .section-inner {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1.5rem;
   }
 
   /* ── Section heading ── */

@@ -86,10 +86,10 @@ export default function Hero() {
               variants={fadeUp}
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}
             >
-              <a id="hero-hire-btn" href="#contact" className="btn btn-primary">
+              <a id="hero-hire-btn" href="#contact" className="btn btn-primary" style={{ padding: '0.875rem 2.25rem' }}>
                 Hire Me
               </a>
-              <a id="hero-projects-btn" href="#portfolio" className="btn btn-outline">
+              <a id="hero-projects-btn" href="#portfolio" className="btn btn-outline" style={{ padding: '0.875rem 2.25rem' }}>
                 See Projects
               </a>
             </motion.div>

@@ -1,10 +1,12 @@
 import './index.css'
-import Navbar    from './components/Navbar'
-import Hero      from './components/Hero'
-import About     from './components/About'
-import Portfolio from './components/Portfolio'
-import Contact   from './components/Contact'
-import Footer    from './components/Footer'
+import Navbar     from './components/Navbar'
+import Hero       from './components/Hero'
+import About      from './components/About'
+import Skills     from './components/Skills'
+import Portfolio  from './components/Portfolio'
+import Experience from './components/Experience'
+import Contact    from './components/Contact'
+import Footer     from './components/Footer'
 
 export default function App() {
   return (
@@ -13,7 +15,9 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <About />
+        <Skills />
         <Portfolio />
+        <Experience />
         <Contact />
       </main>
       <Footer />

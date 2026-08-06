@@ -66,7 +66,7 @@ export default function Contact() {
     >
       <div className="bg-blob" style={{ width: 450, height: 450, background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%)', top: -80, right: -100 }} />
 
-      <div className="section-inner" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
 
         {/* ── Header ── */}
         <Reveal>
