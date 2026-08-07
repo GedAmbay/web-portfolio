@@ -8,8 +8,8 @@ import SocialLinks from './SocialLinks'
 
 /* ── Validation schema ── */
 const schema = z.object({
-  name:    z.string().min(2, 'Name must be at least 2 characters'),
-  email:   z.string().email('Please enter a valid email address'),
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
   message: z.string().min(20, 'Message must be at least 20 characters'),
 })
 
@@ -66,7 +66,7 @@ export default function Contact() {
     >
       <div className="bg-blob" style={{ width: 450, height: 450, background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%)', top: -80, right: -100 }} />
 
-      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
         {/* ── Header ── */}
         <Reveal>

@@ -21,7 +21,7 @@ export const projects = [
     description:
       'Flutter-based progressive web app digitizing restaurant discovery in Iloilo City. Features vendor profiles, Firebase Firestore real-time data, and OpenStreetMap-powered location discovery.',
     techStack: ['Flutter', 'Firebase Firestore', 'OpenStreetMap', 'Dart', 'Firebase Hosting'],
-    liveUrl: null,
+    liveUrl: 'https://mapa-kaon.web.app/',
     repoUrl: null,
     role: 'Lead Researcher',
     award: 'Best Food Systems Innovation — Central Launch 2.0, Western Visayas Startup Hackathon (Nov 2025)',
@@ -36,8 +36,8 @@ export const projects = [
     description:
       'AI-powered content generation and publishing platform. Integrates a modern frontend with n8n automation pipelines to research, structure, and publish SEO/AEO-optimized blog posts directly to WordPress.',
     techStack: ['n8n', 'OpenAI', 'WordPress', 'JavaScript', 'SEO / AEO'],
-    liveUrl: null,
-    repoUrl: null,
+    liveUrl: 'https://callblog.vercel.app/',
+    repoUrl: 'https://dev-call-blog.pantheonsite.io/',
     role: null,
     award: null,
     gradient: 'linear-gradient(135deg, #7C3AED 0%, #EC4899 100%)',

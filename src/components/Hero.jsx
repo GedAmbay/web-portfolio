@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Download } from 'lucide-react'
 import SocialLinks from './SocialLinks'
 
 /* ── Animation variants ── */
@@ -89,8 +90,15 @@ export default function Hero() {
               <a id="hero-hire-btn" href="#contact" className="btn btn-primary" style={{ padding: '0.875rem 2.25rem' }}>
                 Hire Me
               </a>
-              <a id="hero-projects-btn" href="#portfolio" className="btn btn-outline" style={{ padding: '0.875rem 2.25rem' }}>
-                See Projects
+              <a
+                id="hero-resume-btn"
+                href="/Ged_Mico_Ambay_CV.pdf"
+                download
+                className="btn btn-outline"
+                style={{ display: 'inline-flex', gap: '0.5rem', alignItems: 'center', padding: '0.875rem 2.25rem' }}
+              >
+                <Download size={16} />
+                Download Resume
               </a>
             </motion.div>
 

@@ -52,7 +52,7 @@ export default function Experience() {
     >
       <div className="bg-blob" style={{ width: 450, height: 450, background: 'radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)', bottom: -80, left: -120 }} />
 
-      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
         {/* ── Header ── */}
         <Reveal>
