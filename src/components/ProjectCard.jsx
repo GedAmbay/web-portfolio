@@ -20,15 +20,7 @@ export default function ProjectCard({ project }) {
   } = project
 
   return (
-    <article
-      className="glass-card"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-        height: '100%',
-      }}
-    >
+    <article className="glass-card project-card-horizontal">
       {/* ── Gradient thumbnail ── */}
       <div
         className="project-thumbnail"
@@ -65,7 +57,7 @@ export default function ProjectCard({ project }) {
       </div>
 
       {/* ── Card body ── */}
-      <div style={{ padding: '1.25rem 1.375rem 1.375rem', display: 'flex', flexDirection: 'column', flex: 1, gap: '0.75rem' }}>
+      <div className="project-body" style={{ padding: '1.25rem 1.375rem 1.375rem', display: 'flex', flexDirection: 'column', flex: 1, gap: '0.75rem' }}>
 
         {/* Title + role badge */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>

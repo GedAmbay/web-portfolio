@@ -207,7 +207,7 @@ export default function Contact() {
                   type="submit"
                   className="btn btn-primary"
                   disabled={status === 'sending'}
-                  style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', marginTop: '0.5rem' }}
+                  style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', marginTop: '0.5rem', padding: '0.875rem 2.25rem' }}
                 >
                   <Send size={16} />
                   {status === 'sending' ? 'Sending…' : 'Send Message'}

@@ -50,10 +50,9 @@ export default function About() {
             <div style={{ maxWidth: '520px', marginBottom: '2.5rem' }}>
               <div className="glass-card" style={{ padding: '1.375rem', background: 'rgba(37,99,235,0.04)', border: '1px solid rgba(37,99,235,0.12)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                  <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Central_Philippine_University_Seal.webp" alt="Central Philippine University Logo" style={{ width: '4rem', height: '4rem', marginBottom: '1rem', objectFit: 'contain' }} />
                   <div>
                     <p style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-text-dark)', lineHeight: 1.3 }}>
-                      BS Computer Science
+                      Bachelor of Science in Computer Science
                     </p>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600, margin: '0.25rem 0' }}>
                       Central Philippine University
