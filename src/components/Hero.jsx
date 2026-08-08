@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="bg-gradient-mesh"
+      className="section"
       style={{
         position: 'relative',
         minHeight: 'auto',
@@ -37,8 +37,7 @@ export default function Hero() {
       }}
     >
       {/* ── Decorative blobs ── */}
-      <div className="bg-blob" style={{ width: 700, height: 700, background: 'radial-gradient(circle, rgba(37,99,235,0.14) 0%, transparent 70%)', top: -150, left: -250 }} />
-      <div className="bg-blob" style={{ width: 450, height: 450, background: 'radial-gradient(circle, rgba(79,70,229,0.09) 0%, transparent 70%)', bottom: -80, right: -120 }} />
+
 
       <div
         style={{
@@ -304,7 +303,7 @@ export default function Hero() {
               onClick={(e) => e.stopPropagation()}
               className="glass-card"
               style={{
-                background: '#fff',
+                background: 'var(--color-bg-section)',
                 padding: '2rem',
                 maxWidth: '550px',
                 width: '100%',
@@ -337,13 +336,13 @@ export default function Hero() {
               >
                 <X size={20} />
               </button>
-              
-              <img 
-                src="/mapakaon-award.jpg" 
-                alt="Best Food Systems Innovation - MAPAKAON" 
+
+              <img
+                src="/mapakaon-award.jpg"
+                alt="Best Food Systems Innovation - MAPAKAON"
                 style={{ width: '100%', height: 'auto', borderRadius: '1rem', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}
               />
-              
+
               <div>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '0.5rem' }}>
                   Best Food Systems Innovation

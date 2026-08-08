@@ -53,10 +53,10 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="section bg-gradient-mesh"
+      className="section"
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div className="bg-blob" style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(37,99,235,0.09) 0%, transparent 70%)', bottom: -100, left: -150 }} />
+
 
       <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 

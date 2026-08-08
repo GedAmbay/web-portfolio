@@ -21,9 +21,9 @@ export default function About() {
     <section
       id="about"
       className="section"
-      style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div className="bg-blob" style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)', top: -100, right: -150 }} />
+
 
       <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
@@ -38,8 +38,7 @@ export default function About() {
           {/* ── Bio ── */}
           <Reveal delay={0.05}>
             <p style={{ fontSize: '1.0625rem', lineHeight: 1.85, color: 'var(--color-text-body)', marginBottom: '2.5rem', maxWidth: '780px' }}>
-              I'm a Computer Science graduate (Central Philippine University, 2022–2026) with a strong
-              foundation in software development and problem-solving. My OJT experience as an AI Automation
+              I'm a Computer Science graduate with a strong foundation in software development and problem-solving. My OJT experience as an AI Automation
               &amp; Workflow Intern gave me hands-on exposure to AI-powered automation, workflow optimization,
               and web analytics — skills I now bring to every project I build.
             </p>

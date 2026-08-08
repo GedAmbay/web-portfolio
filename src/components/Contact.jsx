@@ -62,9 +62,9 @@ export default function Contact() {
     <section
       id="contact"
       className="section"
-      style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div className="bg-blob" style={{ width: 450, height: 450, background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%)', top: -80, right: -100 }} />
+
 
       <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
