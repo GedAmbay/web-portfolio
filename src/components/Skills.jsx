@@ -181,6 +181,26 @@ const smallSkills = [
       </svg>
     )
   },
+  {
+    name: 'Firebase',
+    pos: { top: '20%', left: '35%' },
+    icon: (
+      <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#FFCA28" d="M18.89 7.64l-2.43-4.66a.82.82 0 00-1.46 0l-3.35 6.42-2.12-4.07a.82.82 0 00-1.46 0L.92 18.91a.82.82 0 00.32 1.13l10.05 5.67a.82.82 0 00.8 0l10.05-5.67a.82.82 0 00.32-1.13L18.89 7.64z" />
+        <path fill="#FFA000" d="M13.62 13.91l-2.12-4.07a.82.82 0 00-1.46 0l-1.92 3.69 3.5 6.7z" />
+        <path fill="#F57C00" d="M11.5 5.34l-3.43-6.58a.82.82 0 00-1.46 0L.92 18.91a.82.82 0 00.32 1.13l5.88-14.7z" />
+      </svg>
+    )
+  },
+  {
+    name: 'Vercel',
+    pos: { top: '70%', left: '45%' },
+    icon: (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1L24 22H0L12 1Z" />
+      </svg>
+    )
+  }
 ]
 
 const softSkills = [
