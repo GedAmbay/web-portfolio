@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Download } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Download, X } from 'lucide-react'
 import SocialLinks from './SocialLinks'
 
 /* ── Animation variants ── */
@@ -21,6 +21,7 @@ const photoAnim = {
 
 export default function Hero() {
   const [imgError, setImgError] = useState(false)
+  const [isAwardModalOpen, setIsAwardModalOpen] = useState(false)
 
   return (
     <section
@@ -186,16 +187,21 @@ export default function Hero() {
               </div>
 
               {/* Floating badge — Projects built */}
-              <motion.div
+              <motion.a
+                href="#portfolio"
                 animate={{ y: [0, -7, 0] }}
                 transition={{ repeat: Infinity, duration: 3.2, ease: 'easeInOut', delay: 1 }}
                 className="glass-card"
+                whileHover={{ scale: 1.05 }}
                 style={{
                   position: 'absolute',
                   bottom: '1.75rem',
                   left: '-1.25rem',
                   padding: '0.75rem 1.25rem',
                   minWidth: '110px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  display: 'block',
                 }}
               >
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.625rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1 }}>
@@ -204,13 +210,15 @@ export default function Hero() {
                 <div style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>
                   Projects Built
                 </div>
-              </motion.div>
+              </motion.a>
 
               {/* Floating badge — Award */}
               <motion.div
                 animate={{ y: [0, -7, 0] }}
                 transition={{ repeat: Infinity, duration: 3.8, ease: 'easeInOut', delay: 0.5 }}
                 className="glass-card"
+                onClick={() => setIsAwardModalOpen(true)}
+                whileHover={{ scale: 1.05 }}
                 style={{
                   position: 'absolute',
                   top: '1.5rem',
@@ -220,6 +228,7 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '0.625rem',
                   maxWidth: '175px',
+                  cursor: 'pointer',
                 }}
               >
                 <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🏆</span>
@@ -267,6 +276,89 @@ export default function Hero() {
           }} />
         </div>
       </motion.div>
+
+      {/* ── Award Modal ── */}
+      <AnimatePresence>
+        {isAwardModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsAwardModalOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(0, 0, 0, 0.4)',
+              backdropFilter: 'blur(8px)',
+              padding: '1.5rem',
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="glass-card"
+              style={{
+                background: '#fff',
+                padding: '2rem',
+                maxWidth: '550px',
+                width: '100%',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+              }}
+            >
+              <button
+                onClick={() => setIsAwardModalOpen(false)}
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  background: 'rgba(0,0,0,0.05)',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '2.5rem',
+                  height: '2.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: 'var(--color-text-dark)',
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+              >
+                <X size={20} />
+              </button>
+              
+              <img 
+                src="/mapakaon-award.jpg" 
+                alt="Best Food Systems Innovation - MAPAKAON" 
+                style={{ width: '100%', height: 'auto', borderRadius: '1rem', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}
+              />
+              
+              <div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '0.5rem' }}>
+                  Best Food Systems Innovation
+                </h3>
+                <p style={{ fontSize: '1rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>
+                  Central Launch 2.0 — Western Visayas Startup Hackathon
+                </p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+                  November 2025 &middot; MapaKaon Project
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

@@ -1,5 +1,6 @@
 import './index.css'
 import Navbar     from './components/Navbar'
+import SideNav    from './components/SideNav'
 import Hero       from './components/Hero'
 import About      from './components/About'
 import Skills     from './components/Skills'
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <>
       <Navbar />
+      <SideNav />
       <main id="main-content">
         <Hero />
         <About />

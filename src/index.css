@@ -890,4 +890,32 @@ body {
   background: linear-gradient(90deg, var(--color-primary), transparent);
   border-radius: 9999px;
   margin-bottom: 2.5rem;
+}/* -- Side Navigation -- */
+.side-nav {
+  display: none;
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.side-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 1400px) {
+  .side-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
 }

@@ -92,34 +92,7 @@ export default function Experience() {
           </div>
         </Reveal>
 
-        {/* ── Award ── */}
-        <Reveal delay={0.15}>
-          <div
-            style={{
-              display: 'flex',
-              gap: '1.125rem',
-              alignItems: 'flex-start',
-              padding: '1.25rem 1.5rem',
-              borderRadius: '1.125rem',
-              background: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(239,68,68,0.07))',
-              border: '1px solid rgba(245,158,11,0.3)',
-              maxWidth: '680px',
-            }}
-          >
-            <Trophy size={26} color="#D97706" style={{ flexShrink: 0, marginTop: '0.1rem' }} />
-            <div>
-              <p style={{ fontWeight: 700, fontSize: '1rem', color: '#92400E' }}>
-                Best Food Systems Innovation
-              </p>
-              <p style={{ fontSize: '0.875rem', color: '#B45309', marginTop: '0.25rem' }}>
-                Central Launch 2.0 — Western Visayas Startup Hackathon
-              </p>
-              <p style={{ fontSize: '0.8125rem', color: '#D97706', marginTop: '0.2rem' }}>
-                November 2025 &middot; MapaKaon Project
-              </p>
-            </div>
-          </div>
-        </Reveal>
+
 
       </div>
     </section>
