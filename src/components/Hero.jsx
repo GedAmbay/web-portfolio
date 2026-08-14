@@ -4,19 +4,19 @@ import { Download, X } from 'lucide-react'
 import SocialLinks from './SocialLinks'
 
 /* ── Animation variants ── */
-const container = {
+const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.25 } },
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
-const photoAnim = {
-  hidden: { opacity: 0, x: 50, scale: 0.96 },
-  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 } },
+const slideIn = {
+  hidden: { opacity: 0, x: 80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 } },
 }
 
 export default function Hero() {
@@ -24,255 +24,130 @@ export default function Hero() {
   const [isAwardModalOpen, setIsAwardModalOpen] = useState(false)
 
   return (
-    <section
-      id="home"
-      className="section"
-      style={{
-        position: 'relative',
-        minHeight: 'auto',
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-        paddingTop: '5rem',
-      }}
-    >
-      {/* ── Decorative blobs ── */}
+    <section id="home" className="hero-section">
 
+      {/* ════════════════════════════════════
+          DECORATIVE BLOBS (behind everything)
+      ════════════════════════════════════ */}
 
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '4rem 1.5rem 6rem',
-          width: '100%',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div className="hero-grid">
+      {/* Blob 1 — large, left edge, peeking behind text */}
+      <motion.img
+        src="/Blob 1.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: 'easeOut' }}
+        className="hero-blob hero-blob-left"
+      />
 
-          {/* ── Left: text content ── */}
-          <motion.div variants={container} initial="hidden" animate="visible">
+      {/* Blob 2 — large, top-right, behind the photo */}
+      <motion.img
+        src="/Blob 2.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: 'easeOut', delay: 0.2 }}
+        className="hero-blob hero-blob-top-right"
+      />
 
-            {/* Availability badge */}
-            <motion.div variants={fadeUp} style={{ marginBottom: '1.5rem' }}>
-              <span className="available-badge">
-                <span className="available-dot" />
-                Available for Work
-              </span>
-            </motion.div>
+      {/* ════════════════════════════════════
+          LEFT COLUMN — Text Content
+      ════════════════════════════════════ */}
+      <div className="hero-left">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+          className="hero-left-inner"
+        >
+          {/* Greeting */}
+          <motion.p variants={fadeUp} className="hero-new-greeting">
+            Hi, I'm
+          </motion.p>
 
-            {/* Greeting + Name */}
-            <motion.p variants={fadeUp} className="hero-greeting">
-              Hi, I'm
-            </motion.p>
-            <motion.h1 variants={fadeUp} className="hero-name">
-              Ged Mico Ambay
-            </motion.h1>
+          {/* Name — gradient */}
+          <motion.h1 variants={fadeUp} className="hero-new-name">
+            Ged Ambay
+          </motion.h1>
 
-            {/* Title */}
-            <motion.p variants={fadeUp} className="hero-title">
-              <strong>Web Developer</strong> &amp; Workflow Automation Specialist
-            </motion.p>
+          {/* Sub-headline */}
+          <motion.p variants={fadeUp} className="hero-new-subtitle">
+            WEB DEVELOPER | WORKFLOW AUTOMATION
+          </motion.p>
 
-            {/* Bio */}
-            <motion.p variants={fadeUp} className="hero-bio">
-              Computer Science graduate from Central Philippine University with a passion for building
-              beautiful web experiences and intelligent automation systems. I turn complex problems
-              into clean, user-friendly solutions.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={fadeUp}
-              style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}
-            >
-              <a id="hero-hire-btn" href="#contact" className="btn btn-primary" style={{ padding: '0.875rem 2.25rem' }}>
-                Hire Me
-              </a>
-              <a
-                id="hero-resume-btn"
-                href="/Ged_Mico_Ambay_CV.pdf"
-                download
-                className="btn btn-outline"
-                style={{ display: 'inline-flex', gap: '0.5rem', alignItems: 'center', padding: '0.875rem 2.25rem' }}
-              >
-                <Download size={16} />
-                Download Resume
-              </a>
-            </motion.div>
-
-            {/* Social icons */}
-            <motion.div variants={fadeUp}>
-              <SocialLinks />
-            </motion.div>
+          {/* Bio card */}
+          <motion.div variants={fadeUp} className="hero-new-bio-card">
+            <p className="hero-new-bio-text">
+              Have passion for building beautiful web experiences and intelligent automation
+              systems. I turn complex problems into clean, user-friendly solutions.
+            </p>
+            <p className="hero-new-bio-text" style={{ marginTop: '0.25rem' }}>
+              <strong style={{ color: '#374151' }}>Let's build something amazing together!</strong>
+            </p>
           </motion.div>
 
-          {/* ── Right: photo ── */}
-          <motion.div
-            variants={photoAnim}
-            initial="hidden"
-            animate="visible"
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          >
-            {/* Floating wrapper */}
-            <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ repeat: Infinity, duration: 5.5, ease: 'easeInOut' }}
-              style={{ position: 'relative', width: '100%', maxWidth: '400px' }}
+          {/* CTA Buttons */}
+          <motion.div variants={fadeUp} className="hero-cta-row">
+            <a id="hero-hire-btn" href="#contact" className="hero-new-btn hero-new-btn-primary">
+              Hire Me
+            </a>
+            <a
+              id="hero-resume-btn"
+              href="/Ged_Mico_Ambay_CV.pdf"
+              download
+              className="hero-new-btn hero-new-btn-outline"
             >
-              {/* Photo frame */}
-              <div
-                style={{
-                  borderRadius: '2rem',
-                  overflow: 'hidden',
-                  background: 'linear-gradient(160deg, #DBEAFE 0%, #EFF6FF 55%, #E0E7FF 100%)',
-                  boxShadow: '0 24px 64px rgba(37,99,235,0.18)',
-                  aspectRatio: '3 / 4',
-                  display: 'flex',
-                  alignItems: 'stretch',
-                  border: '1px solid rgba(255,255,255,0.65)',
-                }}
-              >
-                {!imgError ? (
-                  <img
-                    src="/hero-photo.png"
-                    alt="Ged Mico Ambay — Web Developer and Workflow Automation Specialist"
-                    onError={() => setImgError(true)}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                    }}
-                  />
-                ) : (
-                  /* ── Graceful placeholder ── */
-                  <div
-                    style={{
-                      width: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '1rem',
-                      padding: '2rem',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '130px',
-                        height: '130px',
-                        borderRadius: '9999px',
-                        background: 'linear-gradient(135deg, #2563EB, #4F46E5)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '2.25rem',
-                        fontWeight: 900,
-                        color: '#fff',
-                        fontFamily: 'var(--font-display)',
-                        boxShadow: '0 8px 32px rgba(37,99,235,0.35)',
-                        letterSpacing: '-0.04em',
-                      }}
-                    >
-                      GMA
-                    </div>
-                    <p style={{ color: 'var(--color-text-muted)', fontSize: '0.8125rem', textAlign: 'center' }}>
-                      Place <code>hero-photo.png</code><br />in the <code>public/</code> folder
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {/* Floating badge — Projects built */}
-              <motion.a
-                href="#portfolio"
-                animate={{ y: [0, -7, 0] }}
-                transition={{ repeat: Infinity, duration: 3.2, ease: 'easeInOut', delay: 1 }}
-                className="glass-card"
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  position: 'absolute',
-                  bottom: '1.75rem',
-                  left: '-1.25rem',
-                  padding: '0.75rem 1.25rem',
-                  minWidth: '110px',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  display: 'block',
-                }}
-              >
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.625rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1 }}>
-                  5+
-                </div>
-                <div style={{ fontSize: '0.6875rem', color: 'var(--color-text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>
-                  Projects Built
-                </div>
-              </motion.a>
-
-              {/* Floating badge — Award */}
-              <motion.div
-                animate={{ y: [0, -7, 0] }}
-                transition={{ repeat: Infinity, duration: 3.8, ease: 'easeInOut', delay: 0.5 }}
-                className="glass-card"
-                onClick={() => setIsAwardModalOpen(true)}
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  position: 'absolute',
-                  top: '1.5rem',
-                  right: '-1rem',
-                  padding: '0.75rem 1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.625rem',
-                  maxWidth: '175px',
-                  cursor: 'pointer',
-                }}
-              >
-                <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🏆</span>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-dark)', lineHeight: 1.25 }}>Award Winner</div>
-                  <div style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)', marginTop: '0.1rem' }}>Central Launch 2.0</div>
-                </div>
-              </motion.div>
-            </motion.div>
+              <Download size={15} />
+              Download CV
+            </a>
           </motion.div>
 
-        </div>
+          {/* Social icons */}
+          <motion.div variants={fadeUp}>
+            <SocialLinks variant="hero" />
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* ════════════════════════════════════
+          RIGHT COLUMN — Portrait Photo
+      ════════════════════════════════════ */}
+      <motion.div
+        variants={slideIn}
+        initial="hidden"
+        animate="visible"
+        className="hero-right"
+      >
+        {!imgError ? (
+          <img
+            src="/hero-photo.png"
+            alt="Ged Ambay — Web Developer and Workflow Automation Specialist"
+            onError={() => setImgError(true)}
+            className="hero-portrait"
+          />
+        ) : (
+          <div className="hero-new-photo-placeholder">
+            <div className="hero-new-initials">GA</div>
+            <p style={{ color: '#9ca3af', fontSize: '0.8rem', textAlign: 'center', marginTop: '0.75rem' }}>
+              Place <code>hero-photo.png</code><br />in <code>public/</code>
+            </p>
+          </div>
+        )}
+      </motion.div>
 
       {/* ── Scroll indicator ── */}
       <motion.div
-        animate={{ y: [0, 8, 0], opacity: [0.5, 1, 0.5] }}
-        transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
+        animate={{ y: [0, 8, 0], opacity: [0.4, 1, 0.4] }}
+        transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut' }}
         aria-hidden="true"
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
+        className="hero-scroll-indicator"
       >
-        <div style={{
-          width: '24px',
-          height: '38px',
-          borderRadius: '12px',
-          border: '2px solid rgba(37,99,235,0.3)',
-          display: 'flex',
-          justifyContent: 'center',
-          paddingTop: '5px',
-        }}>
-          <div style={{
-            width: '4px',
-            height: '8px',
-            borderRadius: '9999px',
-            background: 'var(--color-primary)',
-            opacity: 0.7,
-          }} />
+        <div className="hero-scroll-wheel">
+          <div className="hero-scroll-dot" />
         </div>
       </motion.div>
 
@@ -285,72 +160,53 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             onClick={() => setIsAwardModalOpen(false)}
             style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 9999,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'rgba(0, 0, 0, 0.4)',
-              backdropFilter: 'blur(8px)',
+              position: 'fixed', inset: 0, zIndex: 9999,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              background: 'rgba(15,15,40,0.45)', backdropFilter: 'blur(10px)',
               padding: '1.5rem',
             }}
           >
             <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              initial={{ scale: 0.93, opacity: 0, y: 24 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              exit={{ scale: 0.93, opacity: 0, y: 24 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="glass-card"
               style={{
-                background: 'var(--color-bg-section)',
-                padding: '2rem',
-                maxWidth: '550px',
-                width: '100%',
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem',
+                background: 'rgba(255,255,255,0.94)', backdropFilter: 'blur(24px)',
+                border: '1px solid rgba(255,255,255,0.6)', borderRadius: '1.5rem',
+                boxShadow: '0 32px 80px rgba(30,27,75,0.18)', padding: '2rem',
+                maxWidth: '520px', width: '100%', position: 'relative',
+                display: 'flex', flexDirection: 'column', gap: '1.5rem',
               }}
             >
               <button
                 onClick={() => setIsAwardModalOpen(false)}
                 style={{
-                  position: 'absolute',
-                  top: '1rem',
-                  right: '1rem',
-                  background: 'rgba(0,0,0,0.05)',
-                  border: 'none',
-                  borderRadius: '50%',
-                  width: '2.5rem',
-                  height: '2.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  color: 'var(--color-text-dark)',
-                  transition: 'background 0.2s',
+                  position: 'absolute', top: '1rem', right: '1rem',
+                  background: 'rgba(0,0,0,0.06)', border: 'none', borderRadius: '50%',
+                  width: '2.5rem', height: '2.5rem', display: 'flex',
+                  alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', color: '#374151', transition: 'background 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.12)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.06)'}
               >
                 <X size={20} />
               </button>
-
               <img
                 src="/mapakaon-award.jpg"
                 alt="Best Food Systems Innovation - MAPAKAON"
                 style={{ width: '100%', height: 'auto', borderRadius: '1rem', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}
               />
-
               <div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#1e1b4b', marginBottom: '0.5rem' }}>
                   Best Food Systems Innovation
                 </h3>
-                <p style={{ fontSize: '1rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>
+                <p style={{ fontSize: '1rem', color: '#6366f1', fontWeight: 600, marginBottom: '0.25rem' }}>
                   Central Launch 2.0 — Western Visayas Startup Hackathon
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+                <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
                   November 2025 &middot; MapaKaon Project
                 </p>
               </div>
@@ -358,6 +214,23 @@ export default function Hero() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Blob floating keyframes */}
+      <style>{`
+        @keyframes heroBlobFloat1 {
+          0%, 100% { transform: translateY(-50%) rotate(0deg) scale(1); }
+          33%       { transform: translateY(-53%) rotate(5deg) scale(1.04); }
+          66%       { transform: translateY(-47%) rotate(-3deg) scale(0.97); }
+        }
+        @keyframes heroBlobFloat2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%       { transform: translate(-12px, 16px) scale(1.06); }
+        }
+        @keyframes heroBlobFloat3 {
+          0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+          50%       { transform: translate(-8px, 10px) scale(1.04) rotate(8deg); }
+        }
+      `}</style>
     </section>
   )
 }

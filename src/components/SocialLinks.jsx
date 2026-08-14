@@ -95,7 +95,7 @@ export default function SocialLinks({ variant = 'light', className = '' }) {
           role="listitem"
           target={href.startsWith('mailto') ? undefined : '_blank'}
           rel="noopener noreferrer"
-          className={variant === 'dark' ? 'footer-social-icon' : 'social-icon'}
+          className={variant === 'dark' ? 'footer-social-icon' : variant === 'hero' ? 'social-icon-hero' : 'social-icon'}
         >
           <Icon size={18} />
         </a>
