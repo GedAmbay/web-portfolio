@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Code, Code2, Terminal, Smartphone, Rocket, LineChart, Search, PenTool, Image as ImageIcon } from 'lucide-react'
 
@@ -212,115 +212,141 @@ const softSkills = [
 ]
 
 export default function Skills() {
+  const allSkills = [...bigSkills, ...smallSkills];
+  const extendedSkills = [...allSkills, ...allSkills, ...allSkills];
+  const [activeIndex, setActiveIndex] = useState(allSkills.length);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      setContainerWidth(containerRef.current.offsetWidth);
+    }
+    const handleResize = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setActiveIndex((prev) => prev + 1);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    // When we reach the end of the second set, jump back to the end of the first set (same item)
+    if (activeIndex === allSkills.length * 2) {
+      const resetTimer = setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveIndex(allSkills.length);
+      }, 600); // Wait for the 0.5s transition to finish
+      return () => clearTimeout(resetTimer);
+    }
+    // If the user clicks backwards past the first set, jump forward
+    if (activeIndex === 0) {
+      const resetTimer = setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveIndex(allSkills.length);
+      }, 600);
+      return () => clearTimeout(resetTimer);
+    }
+  }, [activeIndex, allSkills.length]);
+
+  const itemWidth = 180;
+  const offset = containerWidth > 0 ? (containerWidth / 2) - (itemWidth / 2) - (activeIndex * itemWidth) : 0;
+
   return (
     <section
       id="skills"
       className="section"
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-
-
-      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-
-        {/* ── Header ── */}
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem', textAlign: 'center' }}>
         <Reveal>
           <p className="section-label">Skills</p>
           <h2 className="section-title">My Toolkit</h2>
-          <p className="section-subtitle">
+          <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '600px' }}>
             Technologies and tools I use to build and automate things.
           </p>
-          <div className="section-divider" />
+          <div className="section-divider" style={{ margin: '1.5rem auto 3rem auto' }} />
         </Reveal>
+      </div>
 
-        {/* ── Skills Cloud ── */}
-        <Reveal delay={0.08}>
-          <div style={{
-            position: 'relative',
-            width: '100%',
-            height: '500px',
-            marginBottom: '3.5rem',
-            overflow: 'hidden'
-          }}>
-            {bigSkills.map((skill, i) => (
-              <div
-                key={skill.name}
-                style={{
-                  position: 'absolute',
-                  top: skill.pos.top,
-                  left: skill.pos.left,
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 2,
-                }}
-              >
+      <div ref={containerRef} style={{ 
+        width: '100%', 
+        overflow: 'hidden', 
+        padding: '2rem 0 6rem 0', 
+        position: 'relative',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+      }}>
+        {containerWidth > 0 && (
+          <motion.div
+            animate={{ x: offset }}
+            transition={{ duration: isTransitioning ? 0.5 : 0, ease: 'easeInOut' }}
+            style={{ display: 'flex', width: 'max-content', alignItems: 'center' }}
+          >
+            {extendedSkills.map((skill, index) => {
+              const isFocused = index === activeIndex;
+              return (
                 <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: i * 0.4
+                  key={index}
+                  animate={{
+                    scale: isFocused ? 1.4 : 0.7,
+                    opacity: isFocused ? 1 : 0.3,
                   }}
+                  transition={{ duration: isTransitioning ? 0.5 : 0 }}
                   style={{
+                    width: `${itemWidth}px`,
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    padding: '1rem 1.5rem',
-                    background: 'var(--color-bg-base)',
-                    borderRadius: '9999px',
-                    boxShadow: '0 8px 24px rgba(37,99,235,0.12)',
-                    border: '1px solid rgba(37,99,235,0.1)',
-                    whiteSpace: 'nowrap',
+                    justifyContent: 'center',
+                    gap: '1.5rem',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => {
+                    setIsTransitioning(true);
+                    setActiveIndex(index);
                   }}
                 >
-                  {skill.icon}
-                  <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-text-dark)' }}>{skill.name}</span>
-                </motion.div>
-              </div>
-            ))}
-
-            {smallSkills.map((skill, i) => (
-              <div
-                key={skill.name}
-                style={{
-                  position: 'absolute',
-                  top: skill.pos.top,
-                  left: skill.pos.left,
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 1,
-                }}
-              >
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: i * 0.3
-                  }}
-                  className="tech-badge"
-                  style={{
-                    fontSize: '1rem',
-                    padding: '0.6rem 1.25rem',
-                    background: 'var(--glass-bg)',
+                  <div style={{
+                    width: '90px',
+                    height: '90px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    whiteSpace: 'nowrap',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-                  }}
-                >
-                  {skill.icon}
-                  {skill.name}
+                    justifyContent: 'center',
+                    background: isFocused ? 'var(--color-bg-base)' : 'var(--glass-bg)',
+                    borderRadius: '24px',
+                    boxShadow: isFocused ? '0 12px 32px rgba(37,99,235,0.2)' : 'none',
+                    border: isFocused ? '1px solid rgba(37,99,235,0.2)' : '1px solid transparent',
+                    transition: isTransitioning ? 'all 0.5s ease' : 'none',
+                  }}>
+                    <div style={{ transform: 'scale(1.8)', display: 'flex' }}>
+                      {skill.icon}
+                    </div>
+                  </div>
+                  <span style={{
+                    fontSize: '1.1rem',
+                    fontWeight: isFocused ? 800 : 600,
+                    color: isFocused ? 'var(--color-text-dark)' : 'var(--color-text-muted)',
+                    transition: isTransitioning ? 'all 0.5s ease' : 'none',
+                    textAlign: 'center',
+                  }}>
+                    {skill.name}
+                  </span>
                 </motion.div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-
-
+              );
+            })}
+          </motion.div>
+        )}
       </div>
     </section>
   )
