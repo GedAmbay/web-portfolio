@@ -66,11 +66,11 @@ function MailIcon({ size = 18 }) {
 }
 
 const links = [
-  { id: 'social-linkedin',  icon: LinkedinIcon,   href: '#',                             label: 'LinkedIn'  },
-  { id: 'social-github',    icon: GithubIcon,     href: '#',                             label: 'GitHub'    },
-  { id: 'social-facebook',  icon: FacebookIcon,   href: '#',                             label: 'Facebook'  },
-  { id: 'social-instagram', icon: InstagramIcon,  href: '#',                             label: 'Instagram' },
-  { id: 'social-email',     icon: MailIcon,       href: 'mailto:ambaygedmico@gmail.com', label: 'Email'     },
+  { id: 'social-linkedin', icon: LinkedinIcon, href: '#', label: 'LinkedIn' },
+  { id: 'social-github', icon: GithubIcon, href: '#', label: 'GitHub' },
+  { id: 'social-facebook', icon: FacebookIcon, href: '#', label: 'Facebook' },
+  { id: 'social-instagram', icon: InstagramIcon, href: '#', label: 'Instagram' },
+  { id: 'social-email', icon: MailIcon, href: 'mailto:ambaygedmico@gmail.com', label: 'Email' },
 ]
 
 /**
@@ -97,7 +97,7 @@ export default function SocialLinks({ variant = 'light', className = '' }) {
           rel="noopener noreferrer"
           className={variant === 'dark' ? 'footer-social-icon' : variant === 'hero' ? 'social-icon-hero' : 'social-icon'}
         >
-          <Icon size={18} />
+          <Icon size={variant === 'hero' ? 28 : 18} />
         </a>
       ))}
     </div>
