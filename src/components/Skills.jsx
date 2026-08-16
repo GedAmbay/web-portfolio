@@ -259,7 +259,7 @@ export default function Skills() {
     }
   }, [activeIndex, allSkills.length]);
 
-  const itemWidth = 180;
+  const itemWidth = 240;
   const offset = containerWidth > 0 ? (containerWidth / 2) - (itemWidth / 2) - (activeIndex * itemWidth) : 0;
 
   return (
@@ -268,21 +268,24 @@ export default function Skills() {
       className="section"
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem', textAlign: 'center' }}>
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
         <Reveal>
           <p className="section-label">Skills</p>
           <h2 className="section-title">My Toolkit</h2>
-          <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '600px' }}>
+          <p className="section-subtitle" style={{ maxWidth: '600px' }}>
             Technologies and tools I use to build and automate things.
           </p>
-          <div className="section-divider" style={{ margin: '1.5rem auto 3rem auto' }} />
+          <div className="section-divider" />
         </Reveal>
       </div>
 
+      <style>{`.carousel-icon-wrapper svg { width: 100px !important; height: 100px !important; }`}</style>
       <div ref={containerRef} style={{ 
         width: '100%', 
+        maxWidth: '1200px',
+        margin: '0 auto',
         overflow: 'hidden', 
-        padding: '2rem 0 6rem 0', 
+        padding: '6rem 1.5rem', 
         position: 'relative',
         WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
         maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
@@ -299,8 +302,8 @@ export default function Skills() {
                 <motion.div
                   key={index}
                   animate={{
-                    scale: isFocused ? 1.4 : 0.7,
-                    opacity: isFocused ? 1 : 0.3,
+                    scale: isFocused ? 1.5 : 0.9,
+                    opacity: isFocused ? 1 : 0.4,
                   }}
                   transition={{ duration: isTransitioning ? 0.5 : 0 }}
                   style={{
@@ -309,7 +312,7 @@ export default function Skills() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '1.5rem',
+                    gap: '1rem',
                     cursor: 'pointer',
                   }}
                   onClick={() => {
@@ -317,26 +320,18 @@ export default function Skills() {
                     setActiveIndex(index);
                   }}
                 >
-                  <div style={{
-                    width: '90px',
-                    height: '90px',
+                  <div className="carousel-icon-wrapper" style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: isFocused ? 'var(--color-bg-base)' : 'var(--glass-bg)',
-                    borderRadius: '24px',
-                    boxShadow: isFocused ? '0 12px 32px rgba(37,99,235,0.2)' : 'none',
-                    border: isFocused ? '1px solid rgba(37,99,235,0.2)' : '1px solid transparent',
                     transition: isTransitioning ? 'all 0.5s ease' : 'none',
                   }}>
-                    <div style={{ transform: 'scale(1.8)', display: 'flex' }}>
-                      {skill.icon}
-                    </div>
+                    {skill.icon}
                   </div>
                   <span style={{
-                    fontSize: '1.1rem',
-                    fontWeight: isFocused ? 800 : 600,
-                    color: isFocused ? 'var(--color-text-dark)' : 'var(--color-text-muted)',
+                    fontSize: '1.25rem',
+                    fontWeight: 800,
+                    color: '#FFFFFF',
                     transition: isTransitioning ? 'all 0.5s ease' : 'none',
                     textAlign: 'center',
                   }}>
