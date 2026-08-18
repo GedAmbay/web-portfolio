@@ -66,10 +66,10 @@ function MailIcon({ size = 18 }) {
 }
 
 const links = [
-  { id: 'social-linkedin', icon: LinkedinIcon, href: '#', label: 'LinkedIn' },
-  { id: 'social-github', icon: GithubIcon, href: '#', label: 'GitHub' },
-  { id: 'social-facebook', icon: FacebookIcon, href: '#', label: 'Facebook' },
-  { id: 'social-instagram', icon: InstagramIcon, href: '#', label: 'Instagram' },
+  { id: 'social-linkedin', icon: LinkedinIcon, href: 'https://www.linkedin.com/in/ged-mico-ambay-aa8546414/', label: 'LinkedIn' },
+  { id: 'social-github', icon: GithubIcon, href: 'https://github.com/GedAmbay', label: 'GitHub' },
+  { id: 'social-facebook', icon: FacebookIcon, href: 'https://www.facebook.com/mboy.ambay.79', label: 'Facebook' },
+  { id: 'social-instagram', icon: InstagramIcon, href: 'https://www.instagram.com/thelast.gedi/', label: 'Instagram' },
   { id: 'social-email', icon: MailIcon, href: 'mailto:ambaygedmico@gmail.com', label: 'Email' },
 ]
 

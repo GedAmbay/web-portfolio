@@ -20,7 +20,7 @@ export const projects = [
     type: 'Startup Project',
     description:
       'Flutter-based progressive web app digitizing restaurant discovery in Iloilo City. Features vendor profiles, Firebase Firestore real-time data, and OpenStreetMap-powered location discovery.',
-    techStack: ['Flutter', 'Firebase Firestore', 'OpenStreetMap', 'Dart', 'Firebase Hosting'],
+    techStack: ['Flutter', 'OpenStreetMap', 'Dart', 'Firebase'],
     liveUrl: 'https://mapa-kaon.web.app/',
     repoUrl: null,
     role: 'Lead Researcher',

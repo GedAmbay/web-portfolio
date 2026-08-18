@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Download, X } from 'lucide-react'
 import SocialLinks from './SocialLinks'
+import cvFile from '../assets/Ged_Mico_Ambay_CV.pdf'
 
 /* ── Animation variants ── */
 const stagger = {
@@ -97,8 +98,8 @@ export default function Hero() {
             </a>
             <a
               id="hero-resume-btn"
-              href="/Ged_Mico_Ambay_CV.pdf"
-              download
+              href={cvFile}
+              download="Ged_Mico_Ambay_CV.pdf"
               className="hero-new-btn hero-new-btn-outline"
             >
               <Download size={15} />
