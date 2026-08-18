@@ -9,13 +9,14 @@ function GithubIcon({ size = 14 }) {
 }
 
 /**
- * @param {{ project: import('../data/projects').projects[number] }} props
+ * @param {{ project: import('../data/projects').projects[number], index?: number }} props
  */
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, index = 0 }) {
   const { title, description, techStack, liveUrl, repoUrl } = project
+  const isEvenProject = index % 2 !== 0
 
   return (
-    <article className="project-card-new">
+    <article className={`project-card-new ${isEvenProject ? 'project-card-reverse' : ''}`}>
       {/* ── Left Side: Mockup Image ── */}
       <div className="project-card-left">
         <img

@@ -994,6 +994,11 @@ body {
     min-height: 450px;
     background: linear-gradient(to right, transparent 0%, transparent 40%, #4b4b4b 60%, #262626 100%);
   }
+
+  .project-card-new.project-card-reverse {
+    flex-direction: row-reverse;
+    background: linear-gradient(to left, transparent 0%, transparent 40%, #4b4b4b 60%, #262626 100%);
+  }
 }
 
 .project-card-left {
@@ -1022,6 +1027,10 @@ body {
   .project-mockup-img {
     transform: scale(1.15) translateX(-1.5rem);
   }
+
+  .project-card-reverse .project-mockup-img {
+    transform: scale(1.15) translateX(1.5rem);
+  }
 }
 
 .project-card-right {
@@ -1036,6 +1045,10 @@ body {
   .project-card-right {
     flex: 0.85;
     padding: 3rem 4rem 3rem 1rem;
+  }
+
+  .project-card-reverse .project-card-right {
+    padding: 3rem 1rem 3rem 4rem;
   }
 }
 

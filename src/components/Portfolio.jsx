@@ -41,7 +41,7 @@ export default function Portfolio() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', marginTop: '2rem' }}>
           {projects.map((project, idx) => (
             <Reveal key={project.id} delay={0.1}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={idx} />
             </Reveal>
           ))}
         </div>
