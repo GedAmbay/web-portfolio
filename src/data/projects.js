@@ -51,7 +51,7 @@ export const projects = [
     description:
       'Full-stack ecommerce platform featuring product browsing, cart management, secure checkout, well-structured database design, user authentication, and a fully responsive UI across all screen sizes.',
     techStack: ['React', 'Node.js', 'MySQL', 'Express', 'JWT'],
-    liveUrl: null,
+    liveUrl: 'https://shop-smart-two.vercel.app/',
     repoUrl: null,
     role: null,
     award: null,
@@ -66,7 +66,7 @@ export const projects = [
     description:
       'NLP-driven fact-checking system that verifies claims against credible Philippine news sources, returning a Real or Fake verdict together with a confidence score for each analyzed statement.',
     techStack: ['Python', 'NLP', 'Machine Learning', 'Web Scraping'],
-    liveUrl: null,
+    liveUrl: 'https://the-deception-detector.vercel.app/',
     repoUrl: null,
     role: 'Documenter',
     award: null,
