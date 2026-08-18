@@ -19,6 +19,16 @@ function Reveal({ children, delay = 0 }) {
 
 const experiences = [
   {
+    id: 'remotasks',
+    title: 'Data Annotator',
+    company: 'Remotasks',
+    period: 'June 2026',
+    gradient: 'linear-gradient(135deg,#7C3AED,#EC4899)',
+    bullets: [
+      <>Annotated and segmented video/sensor datasets capturing robotic task execution to train and fine-tune robotics AI and computer vision models.</>,
+    ],
+  },
+  {
     id: 'callbox',
     title: 'AI Automation & Workflow Intern',
     company: 'Callbox Inc.',
@@ -61,31 +71,30 @@ export default function Experience() {
           <div className="section-divider" />
         </Reveal>
 
-        {/* ── Experience cards ── */}
+        {/* ── Experience Timeline ── */}
         <Reveal delay={0.08}>
-          <div className="experience-grid" style={{ marginBottom: '2rem' }}>
+          <div className="experience-timeline" style={{ marginBottom: '2rem' }}>
+            <div className="timeline-line"></div>
             {experiences.map(({ id, title, company, period, gradient, bullets }) => (
-              <div key={id} className="glass-card" style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <div style={{ flexShrink: 0, width: '2.75rem', height: '2.75rem', borderRadius: '0.75rem', background: gradient, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Briefcase size={17} color="#fff" />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-text-dark)', lineHeight: 1.3 }}>
-                      {title}
-                    </p>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600, margin: '0.25rem 0' }}>
-                      {company}
-                    </p>
-                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', marginBottom: '0.875rem' }}>
-                      {period}
-                    </p>
-                    <ul style={{ paddingLeft: '1.125rem', fontSize: '0.875rem', color: 'var(--color-text-body)', lineHeight: 1.75, listStyle: 'disc' }}>
-                      {bullets.map((b, i) => (
-                        <li key={i}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
+              <div key={id} className="timeline-item">
+                <div className="timeline-node">
+                  <div className="timeline-node-inner" style={{ background: gradient }}></div>
+                </div>
+                <div className="timeline-content" style={{ padding: '0 1.5rem', width: '100%' }}>
+                  <p style={{ fontWeight: 800, fontSize: '1.5rem', fontFamily: 'var(--font-display)', color: 'var(--color-text-dark)', lineHeight: 1.2, marginBottom: '0.25rem' }}>
+                    {title}
+                  </p>
+                  <p style={{ fontSize: '1.0625rem', color: 'var(--color-primary)', fontWeight: 600, margin: '0 0 0.25rem 0' }}>
+                    {company}
+                  </p>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
+                    {period}
+                  </p>
+                  <ul style={{ paddingLeft: '1.125rem', fontSize: '1.0625rem', color: 'var(--color-text-body)', lineHeight: 1.75, listStyle: 'disc' }}>
+                    {bullets.map((b, i) => (
+                      <li key={i} style={{ marginBottom: '0.5rem' }}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
